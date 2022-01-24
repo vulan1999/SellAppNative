@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import colors from '../config/colors';
+import AppText from './AppText';
 
 interface Props{
   title: string;
@@ -14,8 +15,8 @@ const Card = ({title, subTitle, imageSource}: Props) => {
       <View style={styles.cardContainer}>
         <Image source={imageSource} style={styles.image}></Image>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subTitle}>{subTitle}</Text>
+          <AppText style={styles.title}>{title}</AppText>
+          <AppText style={styles.subTitle}>{subTitle}</AppText>
         </View>
     </View>
   );
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 15,
     overflow: 'hidden',
+    marginBottom: 20,
   },
   image:{
     width: '100%',
@@ -37,11 +39,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize:18,
     marginBottom: 10,
   },
-  subTitle:{
-    fontSize:18,
+  subTitle:{  
     color: colors.secondary,
     fontWeight: 'bold'
   }

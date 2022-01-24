@@ -2,13 +2,14 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import React, { ReactNode } from 'react';
 
 interface Props{
-  children: ReactNode
+  children: ReactNode,
+  style?: Object,
 }
 
-const AppText = ({children}:Props) => {
+const AppText = ({children, style = {}}:Props) => {
   return (
   
-      <Text style={styles.appText}>{children}</Text>
+      <Text style={[styles.appText, style]}>{children}</Text>
    );
 };
 
