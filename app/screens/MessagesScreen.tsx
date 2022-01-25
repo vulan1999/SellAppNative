@@ -29,7 +29,8 @@ const initialMessages = [
 ]
 
 const MessagesScreen = () => {
-  const [messages, setMessages] = useState(initialMessages)
+  const [messages, setMessages] = useState(initialMessages);
+  const [refreshing, setRefreshing] = useState(false);
 
   const handleDelete = (message: Message) => {
     const new_messages = messages.filter(m => m.id !== message.id)
@@ -47,6 +48,8 @@ const MessagesScreen = () => {
                                       renderRightAction={() => <ListItemDelete onPress={() => handleDelete(item)}/>}
                                       onPress={() => console.log()} />} 
                                       ItemSeparatorComponent={() => <Divider />} 
+            refreshing={refreshing}
+            onRefresh={() => setMessages(initialMessages)}
         />
     </GestureHandlerRootView>
   </Screen>);
