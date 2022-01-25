@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import React from 'react';
 import colors from '../config/colors';
+import {MaterialCommunityIcons} from '@expo/vector-icons'
 import { Swipeable } from 'react-native-gesture-handler';
 import ListItemDelete from './ListItemDelete';
 interface Props{
@@ -8,11 +9,13 @@ interface Props{
   userName: string;
   description: string;
   onPress: any;
-
+  renderRightAction: () => JSX.Element;
 }
 const ListItem = ({ ...props}: Props) => {
+  
+
   return (
-   <Swipeable renderRightActions={() => <ListItemDelete />} onSwipeableRightOpen={() => console.log('Right')}>
+    <Swipeable renderRightActions={props.renderRightAction}>
       <TouchableHighlight onPress={props.onPress} underlayColor={colors.lightGray}>
         <View style={styles.listingContainer}>
           <Image source={props.imageSource} style={styles.userImage}/>
@@ -20,7 +23,7 @@ const ListItem = ({ ...props}: Props) => {
             <Text style={styles.userName}>{props.userName}</Text>
             <Text style={styles.description}>{props.description}</Text>
           </View>
-        </View>
+        </View> 
       </TouchableHighlight>
     </Swipeable>
   );
@@ -45,5 +48,11 @@ const styles = StyleSheet.create({
   },
   description:{
     color: '#777'
+  },
+  deleteActionContainer:{
+    width: 70,
+    backgroundColor: colors.danger,
+    justifyContent:'center',
+    alignItems: 'center'
   }
 });

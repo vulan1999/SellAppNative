@@ -1,11 +1,19 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import ListItem from '../components/ListItem';
 import Screen from '../components/Screen';
 import Divider from '../components/Divider';
 import ListItemDelete from '../components/ListItemDelete';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-const messages = [
+export type Message = {
+  id: number
+  title: string
+  description: string
+  image: any
+}
+
+const initialMessages = [
   {
     id: 1,
     title: 'T1',
@@ -21,16 +29,26 @@ const messages = [
 ]
 
 const MessagesScreen = () => {
+  const [messages, setMessages] = useState(initialMessages)
+
+  const handleDelete = (message: Message) => {
+    const new_messages = messages.filter(m => m.id !== message.id)
+    setMessages(new_messages);
+  }
+
   return (
     <Screen>
-    <FlatList data={messages} 
-    keyExtractor={messages => messages.id.toString()} 
-    renderItem={({item}) => <ListItem userName={item.title} 
+      <GestureHandlerRootView>
+        <FlatList data={messages} 
+           keyExtractor={messages => messages.id.toString()} 
+            renderItem={({item}) => <ListItem userName={item.title} 
                                       description={item.description} 
                                       imageSource={item.image} 
+                                      renderRightAction={() => <ListItemDelete onPress={() => handleDelete(item)}/>}
                                       onPress={() => console.log()} />} 
                                       ItemSeparatorComponent={() => <Divider />} 
-    />
+        />
+    </GestureHandlerRootView>
   </Screen>);
 };
 

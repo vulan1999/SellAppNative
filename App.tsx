@@ -18,8 +18,10 @@ export default function App() {
       // </View>
       
       // <ListingDetailsScreen imageSource={require("./assets/images/jacket.jpg")} title='Red Jacket on sale!' subTitle='$100' />
-
-      <MessagesScreen />
+     
+        <MessagesScreen />
+    
+      
   );
 }
 
