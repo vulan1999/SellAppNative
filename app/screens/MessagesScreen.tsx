@@ -4,7 +4,6 @@ import ListItem from '../components/ListItem';
 import Screen from '../components/Screen';
 import Divider from '../components/Divider';
 import ListItemDelete from '../components/ListItemDelete';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export type Message = {
   id: number
