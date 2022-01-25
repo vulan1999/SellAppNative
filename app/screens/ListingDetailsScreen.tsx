@@ -19,7 +19,12 @@ const ListingDetailsScreen = ({imageSource, title, subTitle} : Props) => {
         <AppText style={styles.subTitle}>{subTitle}</AppText>
       </View>
 
-      <ListItem imageSource={require('../../assets/images/mosh.jpg')} userName="Mosh Hamedani" description='5 Listings' />
+      <ListItem 
+      imageSource={require('../../assets/images/mosh.jpg')} 
+      title="Mosh Hamedani" 
+      subTitle='5 Listings'
+      onPress={() => console.log('Pressed')}
+       />
     </View>
   );
 };

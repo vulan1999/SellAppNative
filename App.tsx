@@ -1,27 +1,33 @@
 
 import { View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Card from './app/components/Card';
+import Icon from './app/components/Icon';
+import ListItem from './app/components/ListItem';
+import Screen from './app/components/Screen';
+import colors from './app/config/colors';
 import ImageViewScreen from './app/screens/ImageViewScreen';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import ListingsScreen from './app/screens/ListingsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
+import MyAccountScreen from './app/screens/MyAccountScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 
 export default function App() {
   return (
-      // <ImageViewScreen />
+    <GestureHandlerRootView style={{flex:1}}>
+      {/* <ImageViewScreen /> */}
 
-      // <WelcomeScreen />
+      {/* <WelcomeScreen /> */}
 
-      // <View style={{backgroundColor: '#f8f4f4', paddingHorizontal: 20, padding: 100, }}>
-      //   <Card title='Read jacket for sale!' subTitle='$100' imageSource={require("./assets/images/jacket.jpg")} />
-      //   <Card title='Couch for sale!' subTitle='$200' imageSource={require('./assets/images/couch.jpg')} />
-      // </View>
+      {/* <ListingsScreen /> */}
       
-      // <ListingDetailsScreen imageSource={require("./assets/images/jacket.jpg")} title='Red Jacket on sale!' subTitle='$100' />
+      {/* <ListingDetailsScreen imageSource={require("./assets/images/jacket.jpg")} title='Red Jacket on sale!' subTitle='$100' /> */}
      
-        <MessagesScreen />
-    
-      
+      {/* <MessagesScreen /> */}
+
+      <MyAccountScreen />
+    </GestureHandlerRootView>
   );
 }
 

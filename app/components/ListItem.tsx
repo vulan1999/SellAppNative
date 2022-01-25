@@ -1,27 +1,29 @@
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import React from 'react';
 import colors from '../config/colors';
-import {MaterialCommunityIcons} from '@expo/vector-icons'
+
 import { Swipeable } from 'react-native-gesture-handler';
-import ListItemDelete from './ListItemDelete';
+
 interface Props{
-  imageSource: any;
-  userName: string;
-  description: string;
+  imageSource?: any;
+  title: string;
+  subTitle?: string;
   onPress: any;
-  renderRightAction: () => JSX.Element;
+  renderRightAction?: () => JSX.Element;
+  icon?: any;
 }
 const ListItem = ({ ...props}: Props) => {
   
 
   return (
     <Swipeable renderRightActions={props.renderRightAction}>
-      <TouchableHighlight onPress={props.onPress} underlayColor={colors.lightGray}>
+      <TouchableHighlight onPress={props.onPress} underlayColor={colors.light}>
         <View style={styles.listingContainer}>
-          <Image source={props.imageSource} style={styles.userImage}/>
-          <View>
-            <Text style={styles.userName}>{props.userName}</Text>
-            <Text style={styles.description}>{props.description}</Text>
+          {props.imageSource && <Image source={props.imageSource} style={styles.userImage}/>}
+          {props.icon}
+          <View style={styles.detailContainer}>
+            <Text style={styles.title}>{props.title}</Text>
+            {props.subTitle && <Text style={styles.subTitle}>{props.subTitle}</Text>}
           </View>
         </View> 
       </TouchableHighlight>
@@ -40,13 +42,16 @@ const styles = StyleSheet.create({
     width: 70,
     height:70,
     borderRadius: 35,
-    marginRight: 10,
   },
-  userName: {
+  detailContainer:{
+    justifyContent: 'center',
+    marginLeft: 10,
+  },
+  title: {
     fontSize: 15,
-    fontWeight: '600',
+    fontWeight: '700',
   },
-  description:{
+  subTitle:{
     color: '#777'
   },
   deleteActionContainer:{

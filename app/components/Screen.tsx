@@ -4,11 +4,12 @@ import Constants from 'expo-constants';
 
 interface Props{
   children: React.ReactNode,
+  style?: {}
 }
 
-const Screen = ({children} : Props) => {
+const Screen = ({children, style} : Props) => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={[styles.screen, style]}>
       {children}
     </SafeAreaView>
   );

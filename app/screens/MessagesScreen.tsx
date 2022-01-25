@@ -38,12 +38,11 @@ const MessagesScreen = () => {
   }
 
   return (
-    <Screen>
-      <GestureHandlerRootView>
+    <Screen>  
         <FlatList data={messages} 
            keyExtractor={messages => messages.id.toString()} 
-            renderItem={({item}) => <ListItem userName={item.title} 
-                                      description={item.description} 
+            renderItem={({item}) => <ListItem title={item.title} 
+                                      subTitle={item.description} 
                                       imageSource={item.image} 
                                       renderRightAction={() => <ListItemDelete onPress={() => handleDelete(item)}/>}
                                       onPress={() => console.log()} />} 
@@ -51,7 +50,6 @@ const MessagesScreen = () => {
             refreshing={refreshing}
             onRefresh={() => setMessages(initialMessages)}
         />
-    </GestureHandlerRootView>
   </Screen>);
 };
 
