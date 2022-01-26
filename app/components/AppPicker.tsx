@@ -62,9 +62,8 @@ const AppPicker = ({ ...props }: Props) => {
               <PickerItem
                 label={item.label}
                 onPress={() => {
-                  console.log('pressed')
-                  // props.setCategory(item.label)
-                  // setShowModal(false)
+                  props.setCategory(item.label)
+                  setShowModal(false)
                 }}
               />
             )}
