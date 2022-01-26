@@ -1,25 +1,36 @@
-import { Platform, StyleSheet, Text, TextInput, View } from 'react-native'
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TextInputProps,
+  View,
+} from 'react-native'
 import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import colors from '../config/colors'
 
-interface Props {
-  icon?: any
+type InputProps = {
+  icon: any
   placeholder: string
-}
+} & TextInputProps
 
-const AppInput = ({ ...props }: Props) => {
+const AppInput = ({ icon, placeholder, ...otherProps }: InputProps) => {
   return (
     <View style={styles.container}>
-      {props.icon && (
+      {icon && (
         <MaterialCommunityIcons
-          name={props.icon}
+          name={icon}
           color={colors.mediumGray}
           size={20}
           style={styles.icon}
         />
       )}
-      <TextInput placeholder={props.placeholder} style={styles.input} />
+      <TextInput
+        placeholder={placeholder}
+        style={styles.input}
+        {...otherProps}
+      />
     </View>
   )
 }

@@ -8,6 +8,7 @@ import colors from './app/config/colors'
 import ImageViewScreen from './app/screens/ImageViewScreen'
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen'
 import ListingsScreen from './app/screens/ListingsScreen'
+import LoginScreen from './app/screens/LoginScreen'
 import MessagesScreen from './app/screens/MessagesScreen'
 import MyAccountScreen from './app/screens/MyAccountScreen'
 import SearchScreen from './app/screens/SearchScreen'
@@ -28,7 +29,9 @@ export default function App() {
 
       {/* <MyAccountScreen /> */}
 
-      <SearchScreen />
+      {/* <SearchScreen /> */}
+
+      <LoginScreen />
     </GestureHandlerRootView>
   )
 }

@@ -4,12 +4,14 @@ import React, { ReactNode } from 'react'
 interface Props {
   children: ReactNode
   color: string
+  onPress: any
 }
 
-const Button = ({ children, color }: Props) => {
+const Button = ({ children, color, onPress }: Props) => {
   return (
     <TouchableOpacity
       style={[styles.buttonContainer, { backgroundColor: color }]}
+      onPress={onPress}
     >
       <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>
