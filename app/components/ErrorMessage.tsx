@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import AppText from './AppText'
-import colors from '../config/colors'
 
 const ErrorMessage = ({ error }: any) => {
   return <AppText style={styles.errorMessage}>{error}</AppText>

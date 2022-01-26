@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, Text } from 'react-native'
 import React, { ReactNode } from 'react'
 
 interface Props {

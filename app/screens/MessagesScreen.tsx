@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import ListItem from '../components/ListItem'
 import Screen from '../components/Screen'

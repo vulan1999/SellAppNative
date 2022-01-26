@@ -18,8 +18,15 @@ const WelcomeScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button color={colors.primary}>Login</Button>
-        <Button color={colors.secondary}>Register</Button>
+        <Button color={colors.primary} onPress={() => console.log('login')}>
+          Login
+        </Button>
+        <Button
+          color={colors.secondary}
+          onPress={() => console.log('register')}
+        >
+          Register
+        </Button>
       </View>
     </ImageBackground>
   )
