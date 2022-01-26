@@ -1,5 +1,6 @@
 import {
   Button,
+  FlatList,
   Modal,
   Platform,
   StyleSheet,
@@ -11,10 +12,16 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import colors from '../config/colors'
 import AppText from './AppText'
 import Screen from './Screen'
+import { Category } from '../screens/SearchScreen'
+import PickerItem from './PickerItem'
+import Divider from './Divider'
 
 interface Props {
   icon?: any
   placeholder: string
+  items: Category[]
+  category: string
+  setCategory: React.Dispatch<React.SetStateAction<string>>
 }
 
 const AppPicker = ({ ...props }: Props) => {
@@ -33,7 +40,9 @@ const AppPicker = ({ ...props }: Props) => {
                 style={styles.icon}
               />
             )}
-            <AppText>{props.placeholder}</AppText>
+            <AppText>
+              {props.category !== '' ? props.category : props.placeholder}
+            </AppText>
           </View>
           <MaterialCommunityIcons
             name="chevron-down"
@@ -46,6 +55,21 @@ const AppPicker = ({ ...props }: Props) => {
       <Modal visible={showModal} animationType="slide">
         <Screen>
           <Button onPress={() => setShowModal(false)} title="Close" />
+          <FlatList
+            data={props.items}
+            keyExtractor={item => item.value.toString()}
+            renderItem={({ item }) => (
+              <PickerItem
+                label={item.label}
+                onPress={() => {
+                  console.log('pressed')
+                  // props.setCategory(item.label)
+                  // setShowModal(false)
+                }}
+              />
+            )}
+            ItemSeparatorComponent={() => <Divider />}
+          />
         </Screen>
       </Modal>
     </>
