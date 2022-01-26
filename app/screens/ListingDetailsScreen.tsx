@@ -1,16 +1,16 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import AppText from '../components/AppText';
-import colors from '../config/colors';
-import ListItem from '../components/ListItem';
+import { Image, StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import AppText from '../components/AppText'
+import colors from '../config/colors'
+import ListItem from '../components/ListItem'
 
-interface Props{
-  imageSource: any,
-  title: string,
-  subTitle: string,
+interface Props {
+  imageSource: any
+  title: string
+  subTitle: string
 }
 
-const ListingDetailsScreen = ({imageSource, title, subTitle} : Props) => {
+const ListingDetailsScreen = ({ imageSource, title, subTitle }: Props) => {
   return (
     <View>
       <Image source={imageSource} style={styles.image}></Image>
@@ -19,24 +19,24 @@ const ListingDetailsScreen = ({imageSource, title, subTitle} : Props) => {
         <AppText style={styles.subTitle}>{subTitle}</AppText>
       </View>
 
-      <ListItem 
-      imageSource={require('../../assets/images/mosh.jpg')} 
-      title="Mosh Hamedani" 
-      subTitle='5 Listings'
-      onPress={() => console.log('Pressed')}
-       />
+      <ListItem
+        imageSource={require('../../assets/images/mosh.jpg')}
+        title="Mosh Hamedani"
+        subTitle="5 Listings"
+        onPress={() => console.log('Pressed')}
+      />
     </View>
-  );
-};
+  )
+}
 
-export default ListingDetailsScreen;
+export default ListingDetailsScreen
 
 const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 300,
   },
-  detailContainer:{
+  detailContainer: {
     padding: 20,
   },
   title: {
@@ -45,5 +45,5 @@ const styles = StyleSheet.create({
   subTitle: {
     color: colors.secondary,
     fontWeight: 'bold',
-  }
-});
+  },
+})

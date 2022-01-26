@@ -1,23 +1,30 @@
-import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
-import React from 'react';
-import {MaterialCommunityIcons} from '@expo/vector-icons'
-import colors from '../config/colors';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native'
+import React from 'react'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import colors from '../config/colors'
 
-interface Props{
-  icon?: any;
-  placeholder: string;
+interface Props {
+  icon?: any
+  placeholder: string
 }
 
-const AppInput = ({...props}: Props) => {
+const AppInput = ({ ...props }: Props) => {
   return (
     <View style={styles.container}>
-      {props.icon && <MaterialCommunityIcons name={props.icon} color={colors.mediumGray} size={20} style={styles.icon} />}
+      {props.icon && (
+        <MaterialCommunityIcons
+          name={props.icon}
+          color={colors.mediumGray}
+          size={20}
+          style={styles.icon}
+        />
+      )}
       <TextInput placeholder={props.placeholder} style={styles.input} />
     </View>
-  );
-};
+  )
+}
 
-export default AppInput;
+export default AppInput
 
 const styles = StyleSheet.create({
   container: {
@@ -28,12 +35,12 @@ const styles = StyleSheet.create({
     padding: 15,
     marginVertical: 10,
   },
-  icon:{
-    marginRight: 10
+  icon: {
+    marginRight: 10,
   },
-  input:{
+  input: {
     fontSize: 18,
     color: colors.darkGrey,
-    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir'
-  }
-});
+    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
+  },
+})

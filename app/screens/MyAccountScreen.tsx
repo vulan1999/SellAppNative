@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import Screen from '../components/Screen';
-import { FlatList } from 'react-native-gesture-handler';
-import ListItem from '../components/ListItem';
-import Icon from '../components/Icon';
-import colors from '../config/colors';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import Screen from '../components/Screen'
+import { FlatList } from 'react-native-gesture-handler'
+import ListItem from '../components/ListItem'
+import Icon from '../components/Icon'
+import colors from '../config/colors'
 
 const MyAccountScreen = () => {
   const items = [
@@ -19,46 +19,64 @@ const MyAccountScreen = () => {
       icon: 'email',
       backgroundColor: colors.secondary,
       pressEvent: () => console.log('pressed'),
-    }
+    },
   ]
 
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
-      <ListItem 
-      title='Mosh Hamedani' 
-      subTitle='programmingwithmosh@gmail.com' 
-      imageSource={require('../../assets/images/mosh.jpg')}
-      onPress={() => console.log('pressed')}
-      />
-</View>
-<View style={styles.container}>
-      <FlatList
-      data = {items}
-      keyExtractor={(item,index) => index.toString()}
-      renderItem={({item}) => <ListItem title={item.title} 
-      icon={<Icon name={item.icon} iconSize={30} backgroundColor={item.backgroundColor} />}
-      onPress={item.pressEvent}
-       />}
-      />
-</View>
-<View style={styles.container}>
-      <ListItem 
-      title='Log out'
-      icon={<Icon name='logout' backgroundColor='#ffe66d' iconColor={colors.white} iconSize={30} />}
-      onPress={() => console.log('pressed')} /></View>
+        <ListItem
+          title="Mosh Hamedani"
+          subTitle="programmingwithmosh@gmail.com"
+          imageSource={require('../../assets/images/mosh.jpg')}
+          onPress={() => console.log('pressed')}
+        />
+      </View>
+      <View style={styles.container}>
+        <FlatList
+          data={items}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.title}
+              icon={
+                <Icon
+                  name={item.icon}
+                  iconSize={30}
+                  backgroundColor={item.backgroundColor}
+                />
+              }
+              onPress={item.pressEvent}
+            />
+          )}
+        />
+      </View>
+      <View style={styles.container}>
+        <ListItem
+          title="Log out"
+          icon={
+            <Icon
+              name="logout"
+              backgroundColor="#ffe66d"
+              iconColor={colors.white}
+              iconSize={30}
+            />
+          }
+          onPress={() => console.log('pressed')}
+        />
+      </View>
     </Screen>
-  );
-};
+  )
+}
 
-export default MyAccountScreen;
+export default MyAccountScreen
 
 const styles = StyleSheet.create({
   screen: {
-backgroundColor: colors.light
+    backgroundColor: colors.light,
   },
 
-  container:{
+  container: {
     marginVertical: 10,
-  }
-});
+  },
+})

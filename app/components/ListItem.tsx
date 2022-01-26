@@ -1,49 +1,51 @@
-import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import React from 'react';
-import colors from '../config/colors';
+import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
+import React from 'react'
+import colors from '../config/colors'
 
-import { Swipeable } from 'react-native-gesture-handler';
+import { Swipeable } from 'react-native-gesture-handler'
 
-interface Props{
-  imageSource?: any;
-  title: string;
-  subTitle?: string;
-  onPress: any;
-  renderRightAction?: () => JSX.Element;
-  icon?: any;
+interface Props {
+  imageSource?: any
+  title: string
+  subTitle?: string
+  onPress: any
+  renderRightAction?: () => JSX.Element
+  icon?: any
 }
-const ListItem = ({ ...props}: Props) => {
-  
-
+const ListItem = ({ ...props }: Props) => {
   return (
     <Swipeable renderRightActions={props.renderRightAction}>
       <TouchableHighlight onPress={props.onPress} underlayColor={colors.light}>
         <View style={styles.listingContainer}>
-          {props.imageSource && <Image source={props.imageSource} style={styles.userImage}/>}
+          {props.imageSource && (
+            <Image source={props.imageSource} style={styles.userImage} />
+          )}
           {props.icon}
           <View style={styles.detailContainer}>
             <Text style={styles.title}>{props.title}</Text>
-            {props.subTitle && <Text style={styles.subTitle}>{props.subTitle}</Text>}
+            {props.subTitle && (
+              <Text style={styles.subTitle}>{props.subTitle}</Text>
+            )}
           </View>
-        </View> 
+        </View>
       </TouchableHighlight>
     </Swipeable>
-  );
-};
+  )
+}
 
-export default ListItem;
+export default ListItem
 
 const styles = StyleSheet.create({
-  listingContainer:{
+  listingContainer: {
     flexDirection: 'row',
     padding: 15,
   },
   userImage: {
     width: 70,
-    height:70,
+    height: 70,
     borderRadius: 35,
   },
-  detailContainer:{
+  detailContainer: {
     justifyContent: 'center',
     marginLeft: 10,
   },
@@ -51,13 +53,13 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '700',
   },
-  subTitle:{
-    color: '#777'
+  subTitle: {
+    color: '#777',
   },
-  deleteActionContainer:{
+  deleteActionContainer: {
     width: 70,
     backgroundColor: colors.danger,
-    justifyContent:'center',
-    alignItems: 'center'
-  }
-});
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
