@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import Screen from '../components/Screen'
 import { FlatList } from 'react-native-gesture-handler'
-import ListItem from '../components/ListItem'
+import ListItem from '../components/List/ListItem'
 import Icon from '../components/Icon'
 import colors from '../config/colors'
 

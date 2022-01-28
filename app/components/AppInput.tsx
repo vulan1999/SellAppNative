@@ -9,9 +9,9 @@ import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import colors from '../config/colors'
 
-type InputProps = {
-  icon: any
-  placeholder: string
+export type InputProps = {
+  icon?: any
+  placeholder?: any
 } & TextInputProps
 
 const AppInput = ({ icon, placeholder, ...otherProps }: InputProps) => {

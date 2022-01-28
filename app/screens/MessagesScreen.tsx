@@ -1,9 +1,9 @@
 import { FlatList, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
-import ListItem from '../components/ListItem'
+import ListItem from '../components/List/ListItem'
 import Screen from '../components/Screen'
 import Divider from '../components/Divider'
-import ListItemDelete from '../components/ListItemDelete'
+import ListItemDelete from '../components/List/ListItemDelete'
 
 export type Message = {
   id: number

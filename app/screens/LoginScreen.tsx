@@ -3,10 +3,9 @@ import React from 'react'
 import Screen from '../components/Screen'
 import { Formik } from 'formik'
 import AppInput from '../components/AppInput'
-import Button from '../components/Button'
-import colors from '../config/colors'
 import * as Yup from 'yup'
-import ErrorMessage from '../components/ErrorMessage'
+import ErrorMessage from '../components/Form/ErrorMessage'
+import SubmitButton from '../components/Form/SubmitButton'
 
 const LoginScreen = () => {
   const validationSchema = Yup.object().shape({
@@ -25,31 +24,35 @@ const LoginScreen = () => {
         onSubmit={values => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit, errors }) => (
+        {({ handleChange, errors, touched, setFieldTouched }) => (
           <>
             <AppInput
               placeholder="Email"
               icon="email"
               autoCapitalize="none"
               autoCorrect={false}
+              onBlur={() => setFieldTouched('email')}
               onChangeText={handleChange('email')}
               keyboardType="email-address"
               textContentType="emailAddress"
             />
-            <ErrorMessage error={errors.email} />
+
+            <ErrorMessage error={errors.email} visible={touched.email} />
+
             <AppInput
               placeholder="Password"
               icon="lock"
               autoCorrect={false}
               autoCapitalize="none"
               textContentType="password"
+              onBlur={() => setFieldTouched('password')}
               onChangeText={handleChange('password')}
               secureTextEntry
             />
-            <ErrorMessage error={errors.password} />
-            <Button color={colors.primary} onPress={handleSubmit}>
-              Login
-            </Button>
+
+            <ErrorMessage error={errors.password} visible={touched.password} />
+
+            <SubmitButton title="Login" />
           </>
         )}
       </Formik>
