@@ -11,6 +11,7 @@ import ListingsScreen from './app/screens/ListingsScreen'
 import LoginScreen from './app/screens/LoginScreen'
 import MessagesScreen from './app/screens/MessagesScreen'
 import MyAccountScreen from './app/screens/MyAccountScreen'
+import RegisterScreen from './app/screens/RegisterScreen'
 import SearchScreen from './app/screens/SearchScreen'
 import WelcomeScreen from './app/screens/WelcomeScreen'
 
@@ -31,7 +32,9 @@ export default function App() {
 
       {/* <SearchScreen /> */}
 
-      <LoginScreen />
+      {/* <LoginScreen /> */}
+
+      <RegisterScreen />
     </GestureHandlerRootView>
   )
 }
