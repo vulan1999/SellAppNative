@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import React from 'react'
 import colors from '../../config/colors'
-
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Swipeable } from 'react-native-gesture-handler'
 
 interface Props {
@@ -22,11 +22,20 @@ const ListItem = ({ ...props }: Props) => {
           )}
           {props.icon}
           <View style={styles.detailContainer}>
-            <Text style={styles.title}>{props.title}</Text>
+            <Text style={styles.title} numberOfLines={1}>
+              {props.title}
+            </Text>
             {props.subTitle && (
-              <Text style={styles.subTitle}>{props.subTitle}</Text>
+              <Text style={styles.subTitle} numberOfLines={2}>
+                {props.subTitle}
+              </Text>
             )}
           </View>
+          <MaterialCommunityIcons
+            name="chevron-right"
+            color="black"
+            size={20}
+          />
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -39,6 +48,8 @@ const styles = StyleSheet.create({
   listingContainer: {
     flexDirection: 'row',
     padding: 15,
+    alignItems: 'center',
+    backgroundColor: colors.white,
   },
   userImage: {
     width: 70,
@@ -46,6 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   detailContainer: {
+    flex: 1,
     justifyContent: 'center',
     marginLeft: 10,
   },

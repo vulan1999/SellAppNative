@@ -27,7 +27,7 @@ export default function App() {
 
       {/* <ListingDetailsScreen imageSource={require("./assets/images/jacket.jpg")} title='Red Jacket on sale!' subTitle='$100' /> */}
 
-      {/* <MessagesScreen /> */}
+      <MessagesScreen />
 
       {/* <MyAccountScreen /> */}
 
@@ -37,7 +37,7 @@ export default function App() {
 
       {/* <RegisterScreen /> */}
 
-      <ListEditScreen />
+      {/* <ListEditScreen /> */}
     </GestureHandlerRootView>
   )
 }

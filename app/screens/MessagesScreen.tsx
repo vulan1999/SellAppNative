@@ -15,8 +15,10 @@ export type Message = {
 const initialMessages = [
   {
     id: 1,
-    title: 'T1',
-    description: 'D1',
+    title:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta et quia facilis officiis voluptatem numquam odit laborum iste provident perspiciatis?',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, assumenda. Perferendis repellat, ipsa consequuntur officia quo et voluptate cupiditate laudantium tenetur placeat consequatur delectus, odit iusto saepe, eaque quasi rem ipsam non provident. Sit officia facere labore totam debitis provident atque ipsam, ad id ipsa odit illum, hic harum temporibus?',
     image: require('../../assets/images/mosh.jpg'),
   },
   {
