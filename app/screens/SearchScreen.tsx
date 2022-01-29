@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import AppInput from '../components/AppInput'
 import Screen from '../components/Screen'
-import AppPicker from '../components/AppPicker'
+import Picker from '../components/Picker'
 
 export type Category = {
   label: string
@@ -20,7 +20,7 @@ const SearchScreen = () => {
 
   return (
     <Screen style={styles.screen}>
-      <AppPicker
+      <Picker
         placeholder="Category"
         icon="apps"
         items={categories}

@@ -24,7 +24,7 @@ interface Props {
   onSelectItem: (item: Category) => any
 }
 
-const AppPicker = ({ ...props }: Props) => {
+const Picker = ({ ...props }: Props) => {
   const [showModal, setShowModal] = useState(false)
 
   return (
@@ -77,7 +77,7 @@ const AppPicker = ({ ...props }: Props) => {
   )
 }
 
-export default AppPicker
+export default Picker
 
 const styles = StyleSheet.create({
   container: {

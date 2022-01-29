@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import AppPicker from '../AppPicker'
+import Picker from '../Picker'
 import ErrorMessage from './ErrorMessage'
 import { Category } from '../../screens/SearchScreen'
 import { useFormikContext } from 'formik'
@@ -17,7 +17,7 @@ const FormPicker = ({ name, items, placeholder }: FormPickerProps) => {
 
   return (
     <>
-      <AppPicker
+      <Picker
         placeholder={placeholder}
         items={items}
         selectedItem={values[name]}
