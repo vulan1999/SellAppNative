@@ -6,6 +6,7 @@ import ListItem from './app/components/List/ListItem'
 import Screen from './app/components/Screen'
 import colors from './app/config/colors'
 import ImageViewScreen from './app/screens/ImageViewScreen'
+import ListEditScreen from './app/screens/ListEditScreen'
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen'
 import ListingsScreen from './app/screens/ListingsScreen'
 import LoginScreen from './app/screens/LoginScreen'
@@ -34,7 +35,9 @@ export default function App() {
 
       {/* <LoginScreen /> */}
 
-      <RegisterScreen />
+      {/* <RegisterScreen /> */}
+
+      <ListEditScreen />
     </GestureHandlerRootView>
   )
 }

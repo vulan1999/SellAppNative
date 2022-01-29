@@ -20,8 +20,8 @@ interface Props {
   icon?: any
   placeholder: string
   items: Category[]
-  category: string
-  setCategory: React.Dispatch<React.SetStateAction<string>>
+  selectedItem: Category
+  onSelectItem: (item: Category) => any
 }
 
 const AppPicker = ({ ...props }: Props) => {
@@ -41,7 +41,9 @@ const AppPicker = ({ ...props }: Props) => {
               />
             )}
             <AppText>
-              {props.category !== '' ? props.category : props.placeholder}
+              {props.selectedItem
+                ? props.selectedItem.label
+                : props.placeholder}
             </AppText>
           </View>
           <MaterialCommunityIcons
@@ -62,7 +64,7 @@ const AppPicker = ({ ...props }: Props) => {
               <PickerItem
                 label={item.label}
                 onPress={() => {
-                  props.setCategory(item.label)
+                  props.onSelectItem(item)
                   setShowModal(false)
                 }}
               />

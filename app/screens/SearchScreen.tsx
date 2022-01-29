@@ -16,7 +16,7 @@ const SearchScreen = () => {
     { label: 'Gaming Gears', value: 3 },
   ]
 
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState({ label: 'Category', value: 0 })
 
   return (
     <Screen style={styles.screen}>
@@ -24,8 +24,8 @@ const SearchScreen = () => {
         placeholder="Category"
         icon="apps"
         items={categories}
-        category={category}
-        setCategory={setCategory}
+        selectedItem={category}
+        onSelectItem={setCategory}
       />
       <AppInput placeholder="Enter input" icon="email" />
     </Screen>
