@@ -11,7 +11,7 @@ import colors from '../config/colors'
 import * as ImagePicker from 'expo-image-picker'
 
 interface Props {
-  imageUri?: string
+  imageUri?: any
   onChange: (uri: any) => any
 }
 
@@ -40,7 +40,7 @@ const ImageInput = ({ imageUri, onChange }: Props) => {
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         quality: 0.5,
       })
-      if (!result.cancelled) onChange(imageUri)
+      if (!result.cancelled) onChange(result.uri)
     } catch (error) {
       console.log('Error reading an image', error)
     }

@@ -1,15 +1,16 @@
 import { ScrollView, StyleSheet, View } from 'react-native'
 import React, { useRef } from 'react'
 import ImageInput from './ImageInput'
+import { Image } from '../config/types'
 
 interface Props {
-  imageUris: string[]
-  onRemove: (imageUri: string) => any
-  onAdd: (imageUri: string) => any
+  images: Image[]
+  onRemove: (imageUri: any) => any
+  onAdd: (imageUri: any) => any
 }
 
-const ImageInputList = ({ imageUris = [], onRemove, onAdd }: Props) => {
-  const scrollView = useRef()
+const ImageInputList = ({ images = [], onRemove, onAdd }: Props) => {
+  const scrollView = useRef<any>()
 
   return (
     <View>
@@ -19,16 +20,16 @@ const ImageInputList = ({ imageUris = [], onRemove, onAdd }: Props) => {
         onContentSizeChange={() => scrollView.current.scrollToEnd()}
       >
         <View style={styles.container}>
-          {imageUris.map(imageUri => (
-            <View style={styles.image} key={imageUri}>
+          {images.map(image => (
+            <View style={styles.image} key={image.id}>
               <ImageInput
-                imageUri={imageUri}
-                onChange={() => onRemove(imageUri)}
+                imageUri={image.uri}
+                onChange={() => onRemove(image.uri)}
               />
             </View>
           ))}
 
-          <ImageInput onChange={(uri: string) => onAdd(uri)} />
+          <ImageInput onChange={(uri: any) => onAdd(uri)} />
         </View>
       </ScrollView>
     </View>
