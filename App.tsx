@@ -1,10 +1,6 @@
 import { View } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import Card from './app/components/Card'
-import Icon from './app/components/Icon'
-import ListItem from './app/components/List/ListItem'
-import Screen from './app/components/Screen'
-import colors from './app/config/colors'
+import * as ImagePicker from 'expo-image-picker'
 import ImageViewScreen from './app/screens/ImageViewScreen'
 import ListEditScreen from './app/screens/ListEditScreen'
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen'
@@ -15,6 +11,10 @@ import MyAccountScreen from './app/screens/MyAccountScreen'
 import RegisterScreen from './app/screens/RegisterScreen'
 import SearchScreen from './app/screens/SearchScreen'
 import WelcomeScreen from './app/screens/WelcomeScreen'
+import { useEffect, useState } from 'react'
+import Screen from './app/components/Screen'
+import ImageInputList from './app/components/ImageInputList'
+import { Image } from './app/config/types'
 
 export default function App() {
   return (
@@ -27,7 +27,7 @@ export default function App() {
 
       {/* <ListingDetailsScreen imageSource={require("./assets/images/jacket.jpg")} title='Red Jacket on sale!' subTitle='$100' /> */}
 
-      <MessagesScreen />
+      {/* <MessagesScreen /> */}
 
       {/* <MyAccountScreen /> */}
 
@@ -37,7 +37,7 @@ export default function App() {
 
       {/* <RegisterScreen /> */}
 
-      {/* <ListEditScreen /> */}
+      <ListEditScreen />
     </GestureHandlerRootView>
   )
 }

@@ -9,6 +9,7 @@ import {
   FormPicker,
 } from '../components/Form'
 import { Category } from './SearchScreen'
+import FormImagePicker from '../components/Form/FormImagePicker'
 
 const ListEditScreen = () => {
   const validationSchema = Yup.object().shape({
@@ -16,6 +17,7 @@ const ListEditScreen = () => {
     price: Yup.number().required().min(1).max(10000).label('Price'),
     category: Yup.object().required().nullable().label('Category'),
     description: Yup.string().label('Description'),
+    images: Yup.array().min(1, 'Please select at least one image.'),
   })
 
   const Categories: Category[] = [
@@ -36,11 +38,19 @@ const ListEditScreen = () => {
   return (
     <Screen style={styles.screen}>
       <AppForm
-        initialValues={{ title: '', price: 0, description: '', category: null }}
+        initialValues={{
+          title: '',
+          price: 0,
+          description: '',
+          category: null,
+          images: [],
+        }}
         onSubmit={() => console.log('submitted')}
         validationSchema={validationSchema}
       >
         <>
+          <FormImagePicker name="images" />
+
           <FormField
             fieldName="title"
             placeholder="Title"
