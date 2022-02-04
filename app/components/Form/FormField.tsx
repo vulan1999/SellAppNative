@@ -9,7 +9,7 @@ type Field = {
 
 const FormField = ({ fieldName, ...otherProps }: Field) => {
   const { handleChange, touched, setFieldTouched, errors } =
-    useFormikContext<Field>()
+    useFormikContext<any>()
 
   return (
     <>

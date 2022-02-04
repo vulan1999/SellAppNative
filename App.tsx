@@ -17,20 +17,6 @@ import ImageInputList from './app/components/ImageInputList'
 import { Image } from './app/config/types'
 
 export default function App() {
-  const [images, setImages] = useState<Image[]>([])
-
-  const handleAdd = (uri: string) => {
-    const new_image: Image = {
-      id: Math.floor(Math.random() * 10000),
-      uri: uri,
-    }
-    setImages(images.concat(new_image))
-  }
-
-  const handelRemove = (uri: string) => {
-    setImages(images.filter(image => image.uri !== uri))
-  }
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       {/* <ImageViewScreen /> */}
@@ -51,15 +37,7 @@ export default function App() {
 
       {/* <RegisterScreen /> */}
 
-      {/* <ListEditScreen /> */}
-
-      <Screen>
-        <ImageInputList
-          images={images}
-          onAdd={handleAdd}
-          onRemove={handelRemove}
-        />
-      </Screen>
+      <ListEditScreen />
     </GestureHandlerRootView>
   )
 }

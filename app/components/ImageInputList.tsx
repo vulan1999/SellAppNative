@@ -4,12 +4,12 @@ import ImageInput from './ImageInput'
 import { Image } from '../config/types'
 
 interface Props {
-  images: Image[]
+  imageUris: string[]
   onRemove: (imageUri: any) => any
   onAdd: (imageUri: any) => any
 }
 
-const ImageInputList = ({ images = [], onRemove, onAdd }: Props) => {
+const ImageInputList = ({ imageUris = [], onRemove, onAdd }: Props) => {
   const scrollView = useRef<any>()
 
   return (
@@ -20,11 +20,11 @@ const ImageInputList = ({ images = [], onRemove, onAdd }: Props) => {
         onContentSizeChange={() => scrollView.current.scrollToEnd()}
       >
         <View style={styles.container}>
-          {images.map(image => (
-            <View style={styles.image} key={image.id}>
+          {imageUris.map(imageUri => (
+            <View style={styles.image} key={imageUri}>
               <ImageInput
-                imageUri={image.uri}
-                onChange={() => onRemove(image.uri)}
+                imageUri={imageUri}
+                onChange={() => onRemove(imageUri)}
               />
             </View>
           ))}

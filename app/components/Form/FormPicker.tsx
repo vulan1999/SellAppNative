@@ -12,8 +12,7 @@ type FormPickerProps = {
 }
 
 const FormPicker = ({ name, items, placeholder }: FormPickerProps) => {
-  const { errors, setFieldValue, values, touched } =
-    useFormikContext<FormPickerProps>()
+  const { errors, setFieldValue, values, touched } = useFormikContext<any>()
 
   return (
     <>
