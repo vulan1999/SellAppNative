@@ -1,6 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import routes from '../config/routes'
 
 import ListEditScreen from '../screens/ListEditScreen'
 import FeedNavigator from './FeedNavigator'
@@ -27,7 +28,7 @@ const AppNavigator = () => {
         options={({ navigation }) => ({
           tabBarButton: () => (
             <NewListingButton
-              onPress={() => navigation.navigate('ListingEdit')}
+              onPress={() => navigation.navigate(routes.LISTING_EDIT)}
             />
           ),
         })}

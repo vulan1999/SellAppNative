@@ -5,6 +5,7 @@ import { FlatList } from 'react-native-gesture-handler'
 import ListItem from '../components/List/ListItem'
 import Icon from '../components/Icon'
 import colors from '../config/colors'
+import routes from '../config/routes'
 
 const MyAccountScreen = ({ navigation }: any) => {
   const items = [
@@ -18,7 +19,7 @@ const MyAccountScreen = ({ navigation }: any) => {
       title: 'My Message',
       icon: 'email',
       backgroundColor: colors.secondary,
-      pressEvent: () => navigation.navigate('Messages'),
+      pressEvent: () => navigation.navigate(routes.MESSAGES),
     },
   ]
 

@@ -3,6 +3,7 @@ import React from 'react'
 import Screen from '../components/Screen'
 import Card from '../components/Card'
 import colors from '../config/colors'
+import routes from '../config/routes'
 
 const ListingsScreen = ({ navigation }: any) => {
   const listItems = [
@@ -30,7 +31,9 @@ const ListingsScreen = ({ navigation }: any) => {
             title={item.title}
             subTitle={item.price}
             imageSource={item.image}
-            onPress={() => navigation.navigate('ListingDetail', { item: item })}
+            onPress={() =>
+              navigation.navigate(routes.LISTING_DETAIL, { item: item })
+            }
           />
         )}
       />
