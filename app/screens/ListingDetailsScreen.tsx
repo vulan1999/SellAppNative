@@ -4,19 +4,15 @@ import AppText from '../components/AppText'
 import colors from '../config/colors'
 import ListItem from '../components/List/ListItem'
 
-interface Props {
-  imageSource: any
-  title: string
-  subTitle: string
-}
+const ListingDetailsScreen = ({ route }: any) => {
+  const { item } = route.params
 
-const ListingDetailsScreen = ({ imageSource, title, subTitle }: Props) => {
   return (
     <View>
-      <Image source={imageSource} style={styles.image}></Image>
+      <Image source={item.image} style={styles.image}></Image>
       <View style={styles.detailContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+        <AppText style={styles.title}>{item.title}</AppText>
+        <AppText style={styles.subTitle}>{item.price}</AppText>
       </View>
 
       <ListItem
