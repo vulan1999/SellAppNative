@@ -4,19 +4,19 @@ import Screen from '../components/Screen'
 import Card from '../components/Card'
 import colors from '../config/colors'
 
-const ListingsScreen = () => {
+const ListingsScreen = ({ navigation }: any) => {
   const listItems = [
     {
       id: 1,
       image: require('../../assets/images/jacket.jpg'),
       title: 'Red Jacket for sale!',
-      description: '$100',
+      price: '$100',
     },
     {
       id: 2,
       image: require('../../assets/images/couch.jpg'),
       title: 'Couch for sale!',
-      description: '$1000',
+      price: '$1000',
     },
   ]
 
@@ -28,8 +28,9 @@ const ListingsScreen = () => {
         renderItem={({ item }) => (
           <Card
             title={item.title}
-            subTitle={item.description}
+            subTitle={item.price}
             imageSource={item.image}
+            onPress={() => navigation.navigate('ListingDetail', { item: item })}
           />
         )}
       />

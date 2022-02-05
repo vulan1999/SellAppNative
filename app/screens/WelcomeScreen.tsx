@@ -3,7 +3,7 @@ import React from 'react'
 import colors from '../config/colors'
 import Button from '../components/Button'
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }: any) => {
   return (
     <ImageBackground
       source={require('../../assets/images/background.jpg')}
@@ -18,12 +18,15 @@ const WelcomeScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button color={colors.primary} onPress={() => console.log('login')}>
+        <Button
+          color={colors.primary}
+          onPress={() => navigation.navigate('Login')}
+        >
           Login
         </Button>
         <Button
           color={colors.secondary}
-          onPress={() => console.log('register')}
+          onPress={() => navigation.navigate('Register')}
         >
           Register
         </Button>

@@ -6,7 +6,7 @@ import ListItem from '../components/List/ListItem'
 import Icon from '../components/Icon'
 import colors from '../config/colors'
 
-const MyAccountScreen = () => {
+const MyAccountScreen = ({ navigation }: any) => {
   const items = [
     {
       title: 'My Listings',
@@ -18,7 +18,7 @@ const MyAccountScreen = () => {
       title: 'My Message',
       icon: 'email',
       backgroundColor: colors.secondary,
-      pressEvent: () => console.log('pressed'),
+      pressEvent: () => navigation.navigate('Messages'),
     },
   ]
 
