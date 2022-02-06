@@ -1,36 +1,41 @@
 import { FlatList, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Screen from '../components/Screen'
 import Card from '../components/Card'
 import colors from '../config/colors'
 import routes from '../config/routes'
 
+import { getDocs } from 'firebase/firestore'
+import { listingsColRef } from '../firebase/firebase'
+
 const ListingsScreen = ({ navigation }: any) => {
-  const listItems = [
-    {
-      id: 1,
-      image: require('../../assets/images/jacket.jpg'),
-      title: 'Red Jacket for sale!',
-      price: '$100',
-    },
-    {
-      id: 2,
-      image: require('../../assets/images/couch.jpg'),
-      title: 'Couch for sale!',
-      price: '$1000',
-    },
-  ]
+  const [list, setList] = useState<any>([])
+
+  useEffect(() => {
+    async function getListings() {
+      let listings: any[] = []
+      await getDocs(listingsColRef)
+        .then(snapshot => {
+          snapshot.docs.forEach(doc =>
+            listings.push({ ...doc.data(), id: doc.id })
+          )
+          setList(listings)
+        })
+        .catch(err => console.log(err))
+    }
+    getListings()
+  }, [])
 
   return (
     <Screen style={styles.listContainer}>
       <FlatList
-        data={listItems}
-        keyExtractor={item => item.id.toString()}
+        data={list}
+        keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <Card
             title={item.title}
             subTitle={item.price}
-            imageSource={item.image}
+            imageSource={item.image.uri}
             onPress={() =>
               navigation.navigate(routes.LISTING_DETAIL, { item: item })
             }

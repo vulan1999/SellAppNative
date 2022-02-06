@@ -14,10 +14,10 @@ const Card = ({ title, subTitle, imageSource, onPress }: Props) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.cardContainer}>
-        <Image source={imageSource} style={styles.image}></Image>
+        <Image source={{ uri: imageSource }} style={styles.image}></Image>
         <View style={styles.titleContainer}>
           <AppText style={styles.title}>{title}</AppText>
-          <AppText style={styles.subTitle}>{subTitle}</AppText>
+          <AppText style={styles.subTitle}>$ {subTitle}</AppText>
         </View>
       </View>
     </TouchableWithoutFeedback>
