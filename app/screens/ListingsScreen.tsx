@@ -1,32 +1,17 @@
 import { FlatList, StyleSheet } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Screen from '../components/Screen'
 import Card from '../components/Card'
 import colors from '../config/colors'
 import routes from '../config/routes'
 
-import { getDocs } from 'firebase/firestore'
-import { listingsColRef } from '../firebase/firebase'
+import AppText from '../components/AppText'
+import Button from '../components/Button'
+import Loading from '../components/Loading'
+import useGetListing from '../hooks/useGetListing'
 
 const ListingsScreen = ({ navigation }: any) => {
-  const [list, setList] = useState<any>([]);
-  const [error, setError] = useState(false);
-
-  const getListings = async() => {
-    let listings: any[] = []
-    await getDocs(listingsColRef)
-      .then(snapshot => {
-        snapshot.docs.forEach(doc =>
-          listings.push({ ...doc.data(), id: doc.id })
-        )
-        setError(false);
-        setList(listings)
-      })
-      .catch(err => {
-        console.log(err);
-        setError(true);
-      })
-  }
+  const { request: getListings, error, loading, data } = useGetListing()
 
   useEffect(() => {
     getListings()
@@ -34,8 +19,18 @@ const ListingsScreen = ({ navigation }: any) => {
 
   return (
     <Screen style={styles.listContainer}>
+      {error && (
+        <>
+          <AppText>Couldn't retrieve data from server</AppText>
+          <Button color={colors.primary} onPress={() => getListings()}>
+            Retry
+          </Button>
+        </>
+      )}
+
+      {loading && <Loading visible={loading} />}
       <FlatList
-        data={list}
+        data={data}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <Card

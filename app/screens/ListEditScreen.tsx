@@ -10,6 +10,7 @@ import {
 } from '../components/Form'
 import { Category } from './SearchScreen'
 import FormImagePicker from '../components/Form/FormImagePicker'
+import usePostListing from '../hooks/usePostListing'
 
 const ListEditScreen = () => {
   const validationSchema = Yup.object().shape({
@@ -22,18 +23,20 @@ const ListEditScreen = () => {
 
   const Categories: Category[] = [
     {
-      label: 'Furniture',
+      label: 'Clothing',
       value: 1,
     },
     {
-      label: 'Clothing',
+      label: 'Gaming Gear',
       value: 2,
     },
-    {
-      label: 'Gaming Gear',
-      value: 3,
-    },
   ]
+
+  const { request: addListing, error, loading } = usePostListing()
+
+  if (error) {
+    alert("Couldn't add listing to server")
+  }
 
   return (
     <Screen style={styles.screen}>
@@ -45,7 +48,7 @@ const ListEditScreen = () => {
           category: null,
           images: [],
         }}
-        onSubmit={() => console.log('submitted')}
+        onSubmit={addListing}
         validationSchema={validationSchema}
       >
         <>
