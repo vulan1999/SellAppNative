@@ -9,20 +9,26 @@ import { getDocs } from 'firebase/firestore'
 import { listingsColRef } from '../firebase/firebase'
 
 const ListingsScreen = ({ navigation }: any) => {
-  const [list, setList] = useState<any>([])
+  const [list, setList] = useState<any>([]);
+  const [error, setError] = useState(false);
+
+  const getListings = async() => {
+    let listings: any[] = []
+    await getDocs(listingsColRef)
+      .then(snapshot => {
+        snapshot.docs.forEach(doc =>
+          listings.push({ ...doc.data(), id: doc.id })
+        )
+        setError(false);
+        setList(listings)
+      })
+      .catch(err => {
+        console.log(err);
+        setError(true);
+      })
+  }
 
   useEffect(() => {
-    async function getListings() {
-      let listings: any[] = []
-      await getDocs(listingsColRef)
-        .then(snapshot => {
-          snapshot.docs.forEach(doc =>
-            listings.push({ ...doc.data(), id: doc.id })
-          )
-          setList(listings)
-        })
-        .catch(err => console.log(err))
-    }
     getListings()
   }, [])
 
