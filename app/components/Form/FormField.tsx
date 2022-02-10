@@ -8,14 +8,15 @@ type Field = {
 } & InputProps
 
 const FormField = ({ fieldName, ...otherProps }: Field) => {
-  const { handleChange, touched, setFieldTouched, errors } =
+  const { setFieldValue, touched, setFieldTouched, errors, values } =
     useFormikContext<any>()
 
   return (
     <>
       <AppInput
         onBlur={() => setFieldTouched(fieldName)}
-        onChangeText={handleChange(fieldName)}
+        onChangeText={text => setFieldValue(fieldName, text)}
+        value={values[fieldName]}
         {...otherProps}
       />
 
