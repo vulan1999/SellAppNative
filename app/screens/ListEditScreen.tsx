@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet } from 'react-native'
+import React, { useState } from 'react'
 import Screen from '../components/Screen'
 import * as Yup from 'yup'
 import {
@@ -10,6 +10,9 @@ import {
 } from '../components/Form'
 import { Category } from './SearchScreen'
 import FormImagePicker from '../components/Form/FormImagePicker'
+import { Listing } from '../config/types'
+import listingsAPI from '../api/listings'
+import UploadScreen from './UploadScreen'
 
 const ListEditScreen = () => {
   const validationSchema = Yup.object().shape({
@@ -26,17 +29,64 @@ const ListEditScreen = () => {
       value: 1,
     },
     {
-      label: 'Clothing',
+      label: 'Cars',
       value: 2,
     },
     {
-      label: 'Gaming Gear',
+      label: 'Cameras',
       value: 3,
+    },
+    {
+      label: 'Games',
+      value: 4,
+    },
+    {
+      label: 'Clothing',
+      value: 5,
+    },
+    {
+      label: 'Sports',
+      value: 6,
+    },
+    {
+      label: 'Movies & Music',
+      value: 7,
+    },
+    {
+      label: 'Books',
+      value: 8,
+    },
+    {
+      label: 'Other',
+      value: 9,
     },
   ]
 
+  const [uploadVisible, setUploadVisible] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0)
+
+  const handleSubmit = async (listing: Listing, { resetForm }: any) => {
+    setUploadVisible(true)
+    const result = await listingsAPI.addListing(listing, (progress: any) =>
+      setUploadProgress(progress)
+    )
+
+    if (!result.ok) {
+      setUploadVisible(false)
+      return alert('Could not save the listing')
+    }
+
+    resetForm()
+  }
+
   return (
     <Screen style={styles.screen}>
+      <UploadScreen
+        onDone={() => setUploadVisible(false)}
+        progress={uploadProgress}
+        visible={uploadVisible}
+      />
+
       <AppForm
         initialValues={{
           title: '',
@@ -45,7 +95,7 @@ const ListEditScreen = () => {
           category: null,
           images: [],
         }}
-        onSubmit={() => console.log('submitted')}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <>
