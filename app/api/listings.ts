@@ -1,9 +1,28 @@
 import { Listing } from '../config/types'
 import client from './client'
+import cache from '../utils/cache'
+import apiClient from './client'
+import { AxiosRequestConfig } from 'axios'
 
 const endpoint = '/listings'
 
 const getListings = () => client.get(endpoint)
+
+const get = apiClient.get
+apiClient.get = async (
+  url: string,
+  params?: {},
+  axiosConfig?: AxiosRequestConfig
+) => {
+  const response = await get(url, params, axiosConfig)
+  if (response.ok) {
+    cache.store(url, response.data)
+    return response
+  } else {
+    const data = await cache.get(url)
+    return data ? { ok: true, ...data } : response
+  }
+}
 
 const addListing = (listing: Listing, onUploadProgress: any) => {
   const data = new FormData()
