@@ -9,19 +9,19 @@ const endpoint = '/listings'
 const getListings = () => client.get(endpoint)
 
 const get = apiClient.get
+
 apiClient.get = async (
   url: string,
-  params?: {},
-  axiosConfig?: AxiosRequestConfig
+  params?: {} | undefined,
+  axiosConfig?: any
 ) => {
   const response = await get(url, params, axiosConfig)
   if (response.ok) {
     cache.store(url, response.data)
     return response
-  } else {
-    const data = await cache.get(url)
-    return data ? { ok: true, ...data } : response
   }
+  const data = await cache.get(url)
+  return data ? { ok: true, ...data } : response
 }
 
 const addListing = (listing: Listing, onUploadProgress: any) => {
