@@ -2,7 +2,12 @@ import { StyleSheet } from 'react-native'
 import React from 'react'
 import AppText from '../AppText'
 
-const ErrorMessage = ({ error, visible }: any) => {
+interface ErrorProps {
+  error: string
+  visible: boolean
+}
+
+const ErrorMessage = ({ error, visible = false }: ErrorProps) => {
   if (!visible && !error) {
     return null
   }
