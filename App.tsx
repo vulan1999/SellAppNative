@@ -7,8 +7,11 @@ import AppNavigator from './app/Navigator/AppNavigator'
 import AuthContext from './app/auth/context'
 import authStorage from './app/auth/storage'
 import jwtDecode from 'jwt-decode'
+import AppLoading from 'expo-app-loading'
+
 export default function App() {
   const [user, setUser] = useState()
+  const [appReady, setAppReady] = useState(false)
 
   const restoreToken = async () => {
     const token = await authStorage.getToken()
@@ -16,9 +19,15 @@ export default function App() {
     setUser(jwtDecode(token))
   }
 
-  useEffect(() => {
-    restoreToken()
-  }, [])
+  if (!appReady) {
+    return (
+      <AppLoading
+        startAsync={restoreToken}
+        onFinish={() => setAppReady(true)}
+        onError={error => console.log(error)}
+      />
+    )
+  }
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
