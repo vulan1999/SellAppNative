@@ -1,13 +1,22 @@
 import { StyleSheet, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import Screen from '../components/Screen'
 import { FlatList } from 'react-native-gesture-handler'
 import ListItem from '../components/List/ListItem'
 import Icon from '../components/Icon'
 import colors from '../config/colors'
 import routes from '../config/routes'
+import AuthContext from '../auth/context'
+import authStorage from '../auth/storage'
 
 const MyAccountScreen = ({ navigation }: any) => {
+  const authContext = useContext(AuthContext)
+
+  const handleLogout = () => {
+    authContext?.setUser(null)
+    authStorage.removeToken()
+  }
+
   const items = [
     {
       title: 'My Listings',
@@ -27,8 +36,8 @@ const MyAccountScreen = ({ navigation }: any) => {
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Mosh Hamedani"
-          subTitle="programmingwithmosh@gmail.com"
+          title={authContext?.user.name}
+          subTitle={authContext?.user.email}
           imageSource={require('../../assets/images/mosh.jpg')}
           onPress={() => console.log('pressed')}
         />
@@ -63,7 +72,7 @@ const MyAccountScreen = ({ navigation }: any) => {
               iconSize={30}
             />
           }
-          onPress={() => console.log('pressed')}
+          onPress={handleLogout}
         />
       </View>
     </Screen>
