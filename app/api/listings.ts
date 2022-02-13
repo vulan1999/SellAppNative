@@ -2,7 +2,6 @@ import { Listing } from '../config/types'
 import client from './client'
 import cache from '../utils/cache'
 import apiClient from './client'
-import { AxiosRequestConfig } from 'axios'
 
 const endpoint = '/listings'
 
@@ -32,11 +31,16 @@ const addListing = (listing: Listing, onUploadProgress: any) => {
   data.append('description', listing.description)
 
   listing.images.forEach((image, index) => {
-    data.append('images', {
-      name: 'image ' + index,
-      type: 'image/jpeg',
-      uri: image,
-    })
+    data.append(
+      'images',
+      JSON.parse(
+        JSON.stringify({
+          name: 'image ' + index,
+          type: 'image/jpeg',
+          uri: image,
+        })
+      )
+    )
   })
 
   return client.post(endpoint, data, {

@@ -3,8 +3,8 @@ import React from 'react'
 import AppText from '../AppText'
 
 interface ErrorProps {
-  error: string
-  visible: boolean
+  error: any
+  visible: any
 }
 
 const ErrorMessage = ({ error, visible = false }: ErrorProps) => {
